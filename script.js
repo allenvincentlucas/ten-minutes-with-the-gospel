@@ -1,15 +1,27 @@
 // Ten Minutes with the Gospel — home page
 // Reads manifest.json (one entry per day, appended over time) and, once at
-// least one entry exists, features the most recent one in the hero. Until
-// then, the empty-state markup already in index.html stays as-is.
+// least one entry with a date of today or earlier exists, features the
+// most recent one in the hero. Future-dated entries are ignored until
+// their date arrives (compared against the visitor's own device clock) —
+// this hides them from navigation, but the files themselves are still
+// publicly reachable at their direct URL the whole time.
+
+function tmgTodayISO() {
+  var d = new Date();
+  var m = String(d.getMonth() + 1).padStart(2, "0");
+  var day = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + m + "-" + day;
+}
 
 (function () {
   fetch("manifest.json")
     .then(function (res) { return res.json(); })
     .then(function (entries) {
-      if (!Array.isArray(entries) || entries.length === 0) return;
+      var today = tmgTodayISO();
+      var visible = (entries || []).filter(function (e) { return e.date <= today; });
+      if (visible.length === 0) return;
 
-      var latest = entries.slice().sort(function (a, b) {
+      var latest = visible.slice().sort(function (a, b) {
         return a.date < b.date ? 1 : -1;
       })[0];
 
