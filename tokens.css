@@ -1,0 +1,19 @@
+/* Ten Minutes with the Gospel — shared design tokens
+   Signature idea: a ribbon bookmark, like the marker ribbon in a missal
+   or breviary, used to mark "today" / "this month" across the site.
+   These tokens style the site CHROME (home, archive, month pages, and the
+   thin nav strip on day pages). Each day's own reflection page keeps its
+   own bespoke, re-derived palette — these tokens never override that. */
+
+:root {
+  --tmg-paper: #EFE9DC;      /* warm linen page background */
+  --tmg-ink: #262220;        /* warm near-black for body text */
+  --tmg-ribbon: #8B2E3B;     /* ribbon-marker red — CTAs, "today" accents */
+  --tmg-green: #45604A;      /* ordinary-time green — secondary accent, tags */
+  --tmg-gold: #B7934B;       /* gold rule — dividers, fine details */
+  --tmg-stone: #D8CFBB;      /* card borders, quiet fills */
+  --tmg-paper-raised: #F6F2E8; /* slightly lighter paper, for cards on paper */
+
+  --tmg-font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --tmg-font-body: "Work Sans", -apple-system, Helvetica, Arial, sans-serif;
+}
