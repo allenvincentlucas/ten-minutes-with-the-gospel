@@ -1,8 +1,17 @@
 // Ten Minutes with the Gospel — shared month page script.
 // Every /YYYY/MM/index.html points to this ONE file. It figures out which
 // year/month it's in from its own URL, then filters manifest.json down to
-// that month. Copying the month-page template into a new /YYYY/MM/ folder
-// never requires editing this file.
+// that month AND to entries dated today or earlier — future-dated entries
+// stay hidden from this list until their date arrives. Copying the
+// month-page template into a new /YYYY/MM/ folder never requires editing
+// this file.
+
+function tmgTodayISO() {
+  var d = new Date();
+  var m = String(d.getMonth() + 1).padStart(2, "0");
+  var day = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + m + "-" + day;
+}
 
 (function () {
   var MONTH_NAMES = ["January","February","March","April","May","June",
@@ -22,8 +31,9 @@
   fetch("../../manifest.json")
     .then(function (res) { return res.json(); })
     .then(function (entries) {
+      var today = tmgTodayISO();
       var thisMonth = (entries || []).filter(function (e) {
-        return e.date.slice(0, 7) === year + "-" + month;
+        return e.date.slice(0, 7) === year + "-" + month && e.date <= today;
       }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
 
       if (thisMonth.length === 0) return;
