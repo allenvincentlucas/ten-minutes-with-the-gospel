@@ -69,14 +69,6 @@ a:hover { color: var(--dawn-gold); }
 .site-chrome-nav { display: flex; gap: 1.1rem; font-size: 0.88rem; }
 .site-chrome-nav a { color: var(--ivory); font-weight: 600; opacity: 0.85; }
 .site-chrome-nav a:hover { opacity: 1; color: var(--dawn-gold); }
-.breadcrumb {
-  padding: 0.4rem 0 0.6rem;
-  font-size: 0.8rem;
-  color: rgba(250,246,236,0.6);
-}
-.breadcrumb a { color: rgba(250,246,236,0.75); }
-.breadcrumb span { margin: 0 0.35rem; }
-
 /* ---------- Header ---------- */
 .site-header {
   padding: 1.1rem 0;
