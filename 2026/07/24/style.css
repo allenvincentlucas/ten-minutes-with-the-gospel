@@ -75,7 +75,13 @@ a:hover { color: var(--wheat-gold); }
 .hero { padding: 3.2rem 0 2.2rem; }
 .eyebrow {
   font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-  font-size: 0.78rem; color: var(--rust); margin: 0 0 0.9rem;
+  font-size: 0.78rem; color: var(--rust); margin: 0 0 0.35rem;
+}
+.date-line {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #6f6045;
+  margin: 0 0 0.9rem;
 }
 .hero h1 {
   font-family: var(--font-display); font-weight: 700;
