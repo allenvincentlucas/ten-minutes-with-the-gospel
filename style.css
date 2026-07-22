@@ -36,8 +36,17 @@ main {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 0.78rem;
+  line-height: 1.6;
   color: var(--tmg-green);
-  margin: 0 0 0.75rem;
+  margin: 0.2rem 0 0.75rem;
+}
+
+.hero__date {
+  font-family: var(--tmg-font-body);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: #6b675f;
+  margin: -0.35rem 0 0.9rem;
 }
 
 .hero h1 {

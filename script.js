@@ -13,6 +13,19 @@ function tmgTodayISO() {
   return d.getFullYear() + "-" + m + "-" + day;
 }
 
+// Formats "2026-07-23" as "July 23, 2026" without going through Date
+// parsing (which can shift the day backward in negative UTC-offset
+// timezones if you let JS interpret "YYYY-MM-DD" as UTC midnight).
+function tmgFormatDate(iso) {
+  var months = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+  var parts = iso.split("-");
+  var year = parts[0];
+  var month = months[parseInt(parts[1], 10) - 1];
+  var day = parseInt(parts[2], 10);
+  return month + " " + day + ", " + year;
+}
+
 (function () {
   fetch("manifest.json")
     .then(function (res) { return res.json(); })
@@ -26,6 +39,7 @@ function tmgTodayISO() {
       })[0];
 
       var eyebrow = document.getElementById("hero-eyebrow");
+      var dateLine = document.getElementById("hero-date");
       var title = document.getElementById("hero-title");
       var lede = document.getElementById("hero-lede");
       var citation = document.getElementById("hero-citation");
@@ -34,6 +48,11 @@ function tmgTodayISO() {
       eyebrow.textContent = latest.liturgicalDay || "Today's ten minutes";
       title.textContent = latest.title;
       lede.textContent = latest.lede;
+
+      if (dateLine && latest.date) {
+        dateLine.textContent = tmgFormatDate(latest.date);
+        dateLine.hidden = false;
+      }
 
       if (latest.citation) {
         citation.textContent = latest.citation;
