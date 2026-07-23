@@ -93,44 +93,44 @@ h1 {
   border-top: 1px solid var(--tmg-gold);
 }
 
-.archive-entries li {
+.archive-entry {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.6rem;
-  padding: 0.65rem 0;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--tmg-gold);
 }
 
-.archive-entries li:last-child {
+.archive-entry:last-child {
   border-bottom: none;
 }
 
 .archive-entry-date {
-  flex-shrink: 0;
-  min-width: 7rem;
   font-family: var(--tmg-font-body);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--tmg-green);
 }
 
-.archive-entries li a {
+.archive-entry-title {
+  font-family: var(--tmg-font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--tmg-ink);
-  font-weight: 500;
   text-decoration: none;
 }
 
-.archive-entries li a:hover,
-.archive-entries li a:focus-visible {
+.archive-entry-title:hover,
+.archive-entry-title:focus-visible {
   color: var(--tmg-ribbon);
   text-decoration: underline;
 }
 
 .archive-entry-day {
   font-size: 0.85rem;
+  font-style: italic;
   color: var(--tmg-ink);
   opacity: 0.65;
 }
