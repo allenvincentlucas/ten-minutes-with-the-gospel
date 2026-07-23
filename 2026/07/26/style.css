@@ -1,0 +1,213 @@
+/* ============================================================
+   Worth Everything You Have — Seventeenth Sunday in Ordinary Time
+   Palette: "Buried Treasure" — loam brown, wheat gold, pearl
+   ivory, clay terracotta, net-teal. Re-derived from this Gospel's
+   own imagery (the field, the pearl, the fishing net) — not
+   reused from any other day.
+   ============================================================ */
+
+:root {
+  --day-loam:   #3B2A1E; /* dark earthy brown, headings/lines */
+  --day-bg:     #F2E8D5; /* sun-baked field parchment */
+  --day-clay:   #A85736; /* terracotta, the treasure chest */
+  --day-gold:   #C9A227; /* wheat gold, rules & the coin/sun */
+  --day-teal:   #2F5D62; /* net teal, secondary accent */
+  --day-pearl:  #F6F1E7; /* pearl ivory, card surfaces & the pearl */
+  --day-ink:    #2A2018; /* body text */
+}
+
+/* Fallback colors declared first, in case fonts/vars fail to load */
+body {
+  background: #F2E8D5;
+  color: #2A2018;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--day-bg);
+  color: var(--day-ink);
+  font-family: 'Nunito Sans', -apple-system, sans-serif;
+  line-height: 1.65;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Bitter', Georgia, serif;
+  color: var(--day-loam);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+/* HERO */
+.hero__inner {
+  text-align: center;
+  padding: 56px 0 24px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--day-clay);
+  margin: 0 0 6px;
+}
+
+.date-line {
+  font-size: 0.95rem;
+  color: var(--day-loam);
+  opacity: 0.75;
+  margin: 0 0 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  margin: 0 0 16px;
+}
+
+.lede {
+  font-size: 1.15rem;
+  max-width: 52ch;
+  margin: 0 auto 18px;
+}
+
+.citation-pull {
+  font-family: 'Bitter', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--day-teal);
+  border-top: 1px solid var(--day-gold);
+  border-bottom: 1px solid var(--day-gold);
+  display: inline-block;
+  padding: 8px 20px;
+  margin: 8px 0 8px;
+}
+
+.hero__signature {
+  margin-top: 24px;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero__signature svg { width: 100%; height: auto; }
+
+.divider {
+  max-width: 400px;
+  margin: 8px auto 32px;
+  opacity: 0.8;
+}
+.divider svg { width: 100%; height: 20px; display: block; }
+
+/* CARDS shared look */
+.reading-card, .video-card, .ccc-card, .scenario-box, .closing-prayer {
+  background: var(--day-pearl);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  border-radius: 4px;
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+
+.reading-ref {
+  font-weight: 700;
+  color: var(--day-clay);
+}
+.translation-tag {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+blockquote {
+  margin: 16px 0;
+  padding-left: 18px;
+  border-left: 3px solid var(--day-gold);
+}
+blockquote p { margin: 0 0 10px; }
+blockquote sup { color: var(--day-gold); font-weight: 700; margin-right: 2px; }
+
+.translation-note {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 16px;
+}
+
+.reflection h2, .video-section h2, .music-section h2, .catechism-section h2 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--day-gold);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.scenario-box, .closing-prayer {
+  border-left: 4px solid var(--day-teal);
+}
+
+.question-callout {
+  font-family: 'Bitter', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--day-teal);
+  text-align: center;
+  padding: 20px;
+  margin: 28px 0;
+}
+
+.video-grid { display: grid; gap: 24px; }
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.video-embed iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+}
+.video-credit {
+  font-size: 0.9rem;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.ccc-number {
+  font-weight: 700;
+  color: var(--day-clay);
+  margin: 0 0 6px;
+}
+.ccc-card a { color: var(--day-teal); font-weight: 700; }
+.ccc-search-note {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.share-cta {
+  text-align: center;
+  margin: 40px 0;
+}
+.share-cta a {
+  color: var(--day-teal);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--day-gold);
+  padding-bottom: 2px;
+}
+
+a { color: var(--day-teal); }
+
+.site-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+  font-size: 0.82rem;
+  opacity: 0.75;
+  text-align: center;
+}
