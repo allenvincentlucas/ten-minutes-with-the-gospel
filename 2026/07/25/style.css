@@ -147,10 +147,11 @@ section.block h2 .glyph { color: var(--gold); margin-right: 0.5rem; }
 .closing-prayer {
   background: linear-gradient(180deg, var(--gold) 0%, #8a5f22 100%);
   color: #2b1d05; border-radius: 16px; padding: 2rem 2rem 2.2rem;
+  text-align: center;
 }
 .closing-prayer h2 { color: #2b1d05; }
-.closing-prayer p { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; max-width: 56ch; }
-.cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.closing-prayer p { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; max-width: 56ch; margin-left: auto; margin-right: auto; }
+.cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.4rem; justify-content: center; }
 .cta-row a {
   display: inline-block; background: var(--ink); color: var(--cream); padding: 0.65rem 1.2rem;
   border-radius: 999px; font-weight: 700; font-size: 0.9rem; text-decoration: none;
