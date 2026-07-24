@@ -1,213 +1,167 @@
 /* ============================================================
-   Worth Everything You Have — Seventeenth Sunday in Ordinary Time
-   Palette: "Buried Treasure" — loam brown, wheat gold, pearl
-   ivory, clay terracotta, net-teal. Re-derived from this Gospel's
-   own imagery (the field, the pearl, the fishing net) — not
-   reused from any other day.
+   "Worth Everything You Have" — July 26, 2026
+   Seventeenth Sunday in Ordinary Time
+   Matthew 13:44-52 — Treasure, Pearl, and Net
+   Palette: Buried Treasure
    ============================================================ */
 
-:root {
-  --day-loam:   #3B2A1E; /* dark earthy brown, headings/lines */
-  --day-bg:     #F2E8D5; /* sun-baked field parchment */
-  --day-clay:   #A85736; /* terracotta, the treasure chest */
-  --day-gold:   #C9A227; /* wheat gold, rules & the coin/sun */
-  --day-teal:   #2F5D62; /* net teal, secondary accent */
-  --day-pearl:  #F6F1E7; /* pearl ivory, card surfaces & the pearl */
-  --day-ink:    #2A2018; /* body text */
-}
+@import url('https://fonts.googleapis.com/css2?family=Bitter:opsz,wght@12..96,400;12..96,500;12..96,700&family=Nunito+Sans:wght@400;600;800&display=swap');
 
-/* Fallback colors declared first, in case fonts/vars fail to load */
-body {
-  background: #F2E8D5;
-  color: #2A2018;
+:root {
+  --pearl: #f6f1e7;
+  --loam: #3b2a1e;
+  --gold: #c9a227;
+  --leaf-green: #2f5d62;
+  --clay: #a85736;
+  --card: #f6f1e7;
+  --line: rgba(59, 42, 30, 0.16);
+
+  --font-display: 'Bitter', Georgia, serif;
+  --font-body: 'Nunito Sans', -apple-system, sans-serif;
 }
 
 * { box-sizing: border-box; }
+html { color-scheme: light; }
 
 body {
-  background: var(--day-bg);
-  color: var(--day-ink);
-  font-family: 'Nunito Sans', -apple-system, sans-serif;
-  line-height: 1.65;
   margin: 0;
+  background: #f2e8d5;
+  color: #2a2018;
+  color: var(--loam);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: 'Bitter', Georgia, serif;
-  color: var(--day-loam);
-  line-height: 1.15;
-  font-weight: 700;
-}
+img, svg { max-width: 100%; display: block; }
+a { color: var(--clay); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+a:hover { color: var(--gold); }
 
-main {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
-}
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
 
-/* HERO */
-.hero__inner {
-  text-align: center;
-  padding: 56px 0 24px;
+/* ---------- Site-wide chrome (shared across all pages) ---------- */
+/* Fixed site-wide chrome colors — same on every page, not derived from
+   this day's own palette. Matches the site's global design system:
+   ink #262220 / linen paper #EFE9DC. */
+.site-chrome-bar {
+  background: #262220;
+  color: #efe9dc;
 }
-
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--day-clay);
-  margin: 0 0 6px;
+.site-chrome-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.7rem 0;
 }
-
-.date-line {
-  font-size: 0.95rem;
-  color: var(--day-loam);
-  opacity: 0.75;
-  margin: 0 0 20px;
-}
-
-.hero h1 {
-  font-size: clamp(2.1rem, 5vw, 3rem);
-  margin: 0 0 16px;
-}
-
-.lede {
-  font-size: 1.15rem;
-  max-width: 52ch;
-  margin: 0 auto 18px;
-}
-
-.citation-pull {
-  font-family: 'Bitter', serif;
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--day-teal);
-  border-top: 1px solid var(--day-gold);
-  border-bottom: 1px solid var(--day-gold);
-  display: inline-block;
-  padding: 8px 20px;
-  margin: 8px 0 8px;
-}
-
-.hero__signature {
-  margin-top: 24px;
-  max-width: 280px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hero__signature svg { width: 100%; height: auto; }
-
-.divider {
-  max-width: 400px;
-  margin: 8px auto 32px;
-  opacity: 0.8;
-}
-.divider svg { width: 100%; height: 20px; display: block; }
-
-/* CARDS shared look */
-.reading-card, .video-card, .ccc-card, .scenario-box, .closing-prayer {
-  background: var(--day-pearl);
-  border: 1px solid rgba(201, 162, 39, 0.4);
-  border-radius: 4px;
-  padding: 24px 28px;
-  margin: 24px 0;
-}
-
-.reading-ref {
-  font-weight: 700;
-  color: var(--day-clay);
-}
-.translation-tag {
-  font-weight: 400;
-  font-style: italic;
-  font-size: 0.85rem;
-  opacity: 0.8;
-}
-
-blockquote {
-  margin: 16px 0;
-  padding-left: 18px;
-  border-left: 3px solid var(--day-gold);
-}
-blockquote p { margin: 0 0 10px; }
-blockquote sup { color: var(--day-gold); font-weight: 700; margin-right: 2px; }
-
-.translation-note {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-top: 16px;
-}
-
-.reflection h2, .video-section h2, .music-section h2, .catechism-section h2 {
-  font-size: 1.5rem;
-  border-bottom: 2px solid var(--day-gold);
-  display: inline-block;
-  padding-bottom: 4px;
-}
-
-.scenario-box, .closing-prayer {
-  border-left: 4px solid var(--day-teal);
-}
-
-.question-callout {
-  font-family: 'Bitter', serif;
-  font-size: 1.25rem;
-  font-style: italic;
-  color: var(--day-teal);
-  text-align: center;
-  padding: 20px;
-  margin: 28px 0;
-}
-
-.video-grid { display: grid; gap: 24px; }
-.video-embed {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  border-radius: 4px;
-}
-.video-embed iframe {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
-}
-.video-credit {
-  font-size: 0.9rem;
-  margin-top: 12px;
-  margin-bottom: 0;
-}
-
-.ccc-number {
-  font-weight: 700;
-  color: var(--day-clay);
-  margin: 0 0 6px;
-}
-.ccc-card a { color: var(--day-teal); font-weight: 700; }
-.ccc-search-note {
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 20px;
-}
-
-.share-cta {
-  text-align: center;
-  margin: 40px 0;
-}
-.share-cta a {
-  color: var(--day-teal);
-  font-weight: 700;
+.site-title {
+  color: #efe9dc;
   text-decoration: none;
-  border-bottom: 2px solid var(--day-gold);
-  padding-bottom: 2px;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.site-chrome-nav { display: flex; gap: 1.1rem; font-size: 0.88rem; }
+.site-chrome-nav a { color: #efe9dc; font-weight: 600; opacity: 0.85; }
+.site-chrome-nav a:hover { opacity: 1; color: var(--gold); }
+
+/* ---------- Header ---------- */
+.site-header { padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--loam); text-decoration: none; }
+.site-nav { display: flex; gap: 1.25rem; font-size: 0.92rem; }
+.site-nav a { color: var(--leaf-green); font-weight: 700; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 3.2rem 0 2.2rem; }
+.eyebrow {
+  font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 0.78rem; color: var(--clay); margin: 0 0 0.35rem;
+}
+.date-line {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #6f6045;
+  margin: 0 0 0.9rem;
+}
+.hero h1 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 3rem); line-height: 1.12; margin: 0 0 1rem; color: var(--loam);
+}
+.lede { font-size: 1.15rem; max-width: 54ch; color: #4a3a2a; margin: 0 0 1.6rem; }
+.citation-pull {
+  display: inline-block; font-family: var(--font-display); font-style: italic; font-size: 1.05rem;
+  color: var(--leaf-green); border-left: 3px solid var(--gold); padding: 0.3rem 0 0.3rem 0.9rem; margin-bottom: 2.2rem;
+}
+.hero-art { margin: 0 auto; max-width: 280px; }
+
+.divider { padding: 0.4rem 0 1.4rem; }
+
+section.block { padding: 2.6rem 0; border-top: 1px solid var(--line); }
+section.block h2 {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; margin: 0 0 1.2rem; color: var(--loam);
+}
+section.block h2 .glyph { color: var(--gold); margin-right: 0.5rem; }
+
+/* ---------- Gospel reading ---------- */
+.reading-card {
+  background: var(--card); border-radius: 14px; padding: 1.8rem 1.9rem;
+  font-family: var(--font-display); font-size: 1.05rem; color: var(--loam);
+  border: 1px solid var(--line);
+}
+.reading-card p { margin: 0 0 1rem; }
+.reading-card p:last-of-type { margin-bottom: 0; }
+.translation-note {
+  margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px dashed var(--line);
+  font-family: var(--font-body); font-size: 0.92rem; color: #5a4632;
+}
+.translation-note strong { color: var(--loam); }
+
+/* ---------- Reflection ---------- */
+.scenario-box {
+  background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--leaf-green);
+  border-radius: 10px; padding: 1.4rem 1.6rem; margin: 1.4rem 0;
+}
+.scenario-box p:first-child { margin-top: 0; }
+.scenario-box p:last-child { margin-bottom: 0; }
+.question-callout {
+  background: var(--leaf-green); color: var(--pearl); border-radius: 10px; padding: 1.5rem 1.7rem;
+  font-family: var(--font-display); font-size: 1.2rem; font-style: italic; margin-top: 1.6rem;
 }
 
-a { color: var(--day-teal); }
+/* ---------- Video grid ---------- */
+.video-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
+.video-card iframe { width: 100%; aspect-ratio: 16/9; border: 0; border-radius: 12px; }
+.video-card .credit { margin-top: 0.6rem; font-size: 0.92rem; color: #5a4632; }
+.video-card .credit strong { color: var(--loam); }
+.video-card .note { font-size: 0.9rem; color: var(--leaf-green); margin-top: 0.3rem; }
 
+/* ---------- Catechism ---------- */
+.ccc-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; }
+.ccc-card .num { font-family: var(--font-display); font-weight: 700; color: var(--clay); margin-right: 0.4rem; }
+.ccc-callout { margin-top: 1.4rem; font-size: 0.95rem; }
+
+/* ---------- Closing ---------- */
+.closing-prayer {
+  background: linear-gradient(180deg, var(--gold) 0%, #8a6a1c 100%);
+  color: #2b2003; border-radius: 16px; padding: 2rem 2rem 2.2rem;
+}
+.closing-prayer h2 { color: #2b2003; }
+.closing-prayer p { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; max-width: 56ch; }
+.cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.cta-row a {
+  display: inline-block; background: var(--loam); color: var(--pearl); padding: 0.65rem 1.2rem;
+  border-radius: 999px; font-weight: 700; font-size: 0.9rem; text-decoration: none;
+}
+.cta-row a.secondary { background: transparent; color: var(--loam); border: 1.5px solid var(--loam); }
+
+/* ---------- Footer ---------- */
 .site-footer {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px 24px 48px;
-  font-size: 0.82rem;
-  opacity: 0.75;
-  text-align: center;
+  padding: 2.4rem 0 3.5rem; font-size: 0.85rem; color: #6f6045; border-top: 1px solid var(--line); margin-top: 1rem;
+}
+.site-footer p { margin: 0 0 0.6rem; }
+
+@media (max-width: 640px) {
+  .site-nav { gap: 0.9rem; }
+  .closing-prayer { padding: 1.6rem 1.4rem 1.8rem; }
 }
