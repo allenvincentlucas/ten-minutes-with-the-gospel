@@ -40,9 +40,12 @@ a:hover { color: var(--gold); }
 .wrap { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* ---------- Site-wide chrome (shared across all pages) ---------- */
+/* Fixed site-wide chrome colors — same on every page, not derived from
+   this day's own palette. Matches the site's global design system:
+   ink #262220 / linen paper #EFE9DC. */
 .site-chrome-bar {
-  background: var(--loam);
-  color: var(--pearl);
+  background: #262220;
+  color: #efe9dc;
 }
 .site-chrome-inner {
   display: flex;
@@ -53,13 +56,13 @@ a:hover { color: var(--gold); }
   padding: 0.7rem 0;
 }
 .site-title {
-  color: var(--pearl);
+  color: #efe9dc;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.92rem;
 }
 .site-chrome-nav { display: flex; gap: 1.1rem; font-size: 0.88rem; }
-.site-chrome-nav a { color: var(--pearl); font-weight: 600; opacity: 0.85; }
+.site-chrome-nav a { color: #efe9dc; font-weight: 600; opacity: 0.85; }
 .site-chrome-nav a:hover { opacity: 1; color: var(--gold); }
 
 /* ---------- Header ---------- */
@@ -142,10 +145,11 @@ section.block h2 .glyph { color: var(--gold); margin-right: 0.5rem; }
 .closing-prayer {
   background: linear-gradient(180deg, var(--gold) 0%, #8a6a1c 100%);
   color: #2b2003; border-radius: 16px; padding: 2rem 2rem 2.2rem;
+  text-align: center;
 }
 .closing-prayer h2 { color: #2b2003; }
-.closing-prayer p { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; max-width: 56ch; }
-.cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.closing-prayer p { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; max-width: 56ch; margin-left: auto; margin-right: auto; }
+.cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.4rem; justify-content: center; }
 .cta-row a {
   display: inline-block; background: var(--loam); color: var(--pearl); padding: 0.65rem 1.2rem;
   border-radius: 999px; font-weight: 700; font-size: 0.9rem; text-decoration: none;
