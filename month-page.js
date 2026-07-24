@@ -1,70 +1,75 @@
-// Ten Minutes with the Gospel — shared month page script.
-// Every /YYYY/MM/index.html points to this ONE file. It figures out which
-// year/month it's in from its own URL, then filters manifest.json down to
-// that month AND to entries dated today or earlier — future-dated entries
-// stay hidden from this list until their date arrives. Copying the
-// month-page template into a new /YYYY/MM/ folder never requires editing
-// this file.
-
-function tmgTodayISO() {
-  var d = new Date();
-  var m = String(d.getMonth() + 1).padStart(2, "0");
-  var day = String(d.getDate()).padStart(2, "0");
-  return d.getFullYear() + "-" + m + "-" + day;
-}
+// Ten Minutes with the Gospel — shared month-page script.
+// Used by EVERY /YYYY/MM/index.html. Never edited per month — this same
+// file is linked from every month folder as ../../month-page.js.
+// It reads its own folder path (e.g. /2026/07/) to know which month it
+// is, fetches the site-wide manifest, and lists just that month's entries.
 
 (function () {
-  var MONTH_NAMES = ["January","February","March","April","May","June",
-    "July","August","September","October","November","December"];
+  var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
 
-  var segs = window.location.pathname.split("/").filter(Boolean);
-  if (segs.length && segs[segs.length - 1].indexOf(".") !== -1) segs.pop();
-  var month = segs[segs.length - 1];
-  var year = segs[segs.length - 2];
-  var label = MONTH_NAMES[parseInt(month, 10) - 1] + " " + year;
+  function tmgTodayISO() {
+    var d = new Date();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + day;
+  }
 
-  document.getElementById("month-eyebrow").textContent = label;
-  document.getElementById("month-title").textContent = "Reflections from " + label;
-  document.getElementById("crumb-month").textContent = label;
-  document.title = label + " — Ten Minutes with the Gospel";
+  // Pull the /YYYY/MM/ segment out of this page's own path.
+  function getYearMonth() {
+    var match = window.location.pathname.match(/(\d{4})\/(\d{2})\/?(?:index\.html)?$/);
+    if (!match) return null;
+    return { year: match[1], month: match[2] };
+  }
 
-  fetch("../../manifest.json")
-    .then(function (res) { return res.json(); })
-    .then(function (entries) {
-      var today = tmgTodayISO();
-      var thisMonth = (entries || []).filter(function (e) {
-        return e.date.slice(0, 7) === year + "-" + month && e.date <= today;
-      }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+  document.addEventListener('DOMContentLoaded', function () {
+    var ym = getYearMonth();
+    var titleEl = document.getElementById('month-title');
+    var listEl = document.getElementById('month-entries');
 
-      if (thisMonth.length === 0) return;
+    if (!ym) {
+      if (listEl) listEl.innerHTML = '<p class="empty-note">Could not determine which month this page is for.</p>';
+      return;
+    }
 
-      var list = document.getElementById("day-list");
-      list.innerHTML = "";
+    var monthName = MONTH_NAMES[parseInt(ym.month, 10) - 1] || ym.month;
+    if (titleEl) titleEl.textContent = 'Reflections from ' + monthName + ' ' + ym.year;
+    document.title = monthName + ' ' + ym.year + ' — Ten Minutes with the Gospel';
 
-      thisMonth.forEach(function (e) {
-        var day = e.date.slice(8, 10);
-        var a = document.createElement("a");
-        a.className = "day-card";
-        a.href = day + "/index.html";
+    fetch('../../manifest.json')
+      .then(function (res) { return res.json(); })
+      .then(function (entries) {
+        var today = tmgTodayISO();
+        var prefix = ym.year + '-' + ym.month;
 
-        var h2 = document.createElement("h2");
-        h2.textContent = e.title;
+        var monthEntries = entries.filter(function (e) {
+          return e.date.indexOf(prefix) === 0 && e.date <= today;
+        });
 
-        var meta = document.createElement("p");
-        meta.className = "day-card__meta";
-        meta.textContent = e.liturgicalDay + (e.citation ? " \u2014 " + e.citation : "");
+        monthEntries.sort(function (a, b) {
+          return b.date.localeCompare(a.date);
+        });
 
-        var lede = document.createElement("p");
-        lede.className = "day-card__lede";
-        lede.textContent = e.lede;
+        if (!listEl) return;
 
-        a.appendChild(h2);
-        a.appendChild(meta);
-        a.appendChild(lede);
-        list.appendChild(a);
+        if (monthEntries.length === 0) {
+          listEl.innerHTML = '<p class="empty-note">Nothing published yet this month — check back soon.</p>';
+          return;
+        }
+
+        listEl.innerHTML = monthEntries.map(function (e) {
+          var day = e.slug.split('/')[2];
+          var dateObj = new Date(e.date + 'T00:00:00');
+          var dateLabel = MONTH_NAMES[dateObj.getMonth()] + ' ' + dateObj.getDate() + ', ' + dateObj.getFullYear();
+          return '<a class="month-card" href="./' + day + '/index.html">' +
+            '<span class="month-card-date">' + dateLabel + '</span>' +
+            '<span class="month-card-title">' + e.title + '</span>' +
+            '<span class="month-card-day">' + e.liturgicalDay + '</span>' +
+            '</a>';
+        }).join('');
+      })
+      .catch(function () {
+        if (listEl) listEl.innerHTML = '<p class="empty-note">Could not load this month\'s reflections right now.</p>';
       });
-    })
-    .catch(function () {
-      // Empty-state markup already in the page covers this case.
-    });
+  });
 })();
