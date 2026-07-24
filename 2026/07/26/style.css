@@ -40,12 +40,9 @@ a:hover { color: var(--gold); }
 .wrap { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* ---------- Site-wide chrome (shared across all pages) ---------- */
-/* Fixed site-wide chrome colors — same on every page, not derived from
-   this day's own palette. Matches the site's global design system:
-   ink #262220 / linen paper #EFE9DC. */
 .site-chrome-bar {
-  background: #262220;
-  color: #efe9dc;
+  background: var(--loam);
+  color: var(--pearl);
 }
 .site-chrome-inner {
   display: flex;
@@ -56,13 +53,13 @@ a:hover { color: var(--gold); }
   padding: 0.7rem 0;
 }
 .site-title {
-  color: #efe9dc;
+  color: var(--pearl);
   text-decoration: none;
   font-weight: 700;
   font-size: 0.92rem;
 }
 .site-chrome-nav { display: flex; gap: 1.1rem; font-size: 0.88rem; }
-.site-chrome-nav a { color: #efe9dc; font-weight: 600; opacity: 0.85; }
+.site-chrome-nav a { color: var(--pearl); font-weight: 600; opacity: 0.85; }
 .site-chrome-nav a:hover { opacity: 1; color: var(--gold); }
 
 /* ---------- Header ---------- */
